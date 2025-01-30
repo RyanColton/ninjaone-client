@@ -93,7 +93,7 @@ src/
 
 - I chose not to bring in a UI component library like shadcn or tailwindui because I just needed to build a few components and the design was simple enough to be handled with the native tailwind classes. React-modal would be a good addition to the library if more complex modals are needed. I tend to prefer styling raw html inputs when using tailwind, but css in js libraries are a good alternative if it is preferred to keep the html clean. There are performance concerns with css in js libraries, so it is good to be aware of that when considering using them.
 
--If this were a full production application and we wanted to continue to build our own UI library, I would recommend using a library like storybook to help with development and documentation.
+- If this were a full production application and we wanted to continue to build our own UI library, I would recommend using a library like storybook to help with development and documentation.
 
 - Some optimizations that could make the application more efficient if the data set was larger include: Implementing pagination or infinite scrolling for the device list, having the sorting searching and filtering be server side, and implementing a robust debounce for the search field. Having the initial render of the application be server side would also help with performance, if I would have gone with a framework like the app router in next.js that would have been built in. Server components are part of react 18 but would require more implementation time done outside a framework.
 
