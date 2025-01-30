@@ -71,11 +71,12 @@ src/
 │   ├── UILibrary/    # Reusable UI components built with tailwind
 │   └── Modals/       # Modal components built with UI library modal (similar to react-modal)
 ├── apiCalls/         # API custom hooks
-├── types/           # TypeScript types
-└── utils/           # Utility functions
+└── types/            # TypeScript types
 ```
 
 ## Notes
+- My overall approach was be to treat this as the MVP of a full fledged application, and build it out from there. Considerations around any potential future requirements are considered with this architecture. There are areas where I could have been more DRY, but any areas of duplication are areas that I could forsee diverging in the future.
+
 - I decided to use vite because it is a great modern build tool for react, instead of using a full fledged framework like next.js or remix to keep the scope of the project manageable. In a full production application, I would consider using a framework to handle the routing and server side rendering.
 
 - I chose to use react query for the api calls because it is a lightweight addition to your project that makes data fetching and mutation easier to handle. The built in cache invalidation is a great abstraction that makes the api calls more reliable and easier to handle. If we were using a framework like next.js or remix, I would probably stick to using the framework's built in data fetching and mutation tools.
@@ -85,6 +86,8 @@ src/
 - There is minimal state management in the project, the only state is the device list which is fetched from the server and stored in the react query cache. There is not need for a state management library like redux due to the simplicity of the requirements we are mostly just reading and writing to a single list stored on the backend. I do find that the use case for a library like redux is more rare than most developers think, but it is still a good tool to have in your toolbox if the needs of your application require it.
 
 - All the form inputs are controlled components, I didnt choose to bring in a library like formik or react hook form because I think the modal forms were simple enough to be handled with the native input fields. If more complex forms are needed, I would consider bringing in a library.
+
+- Though the update and Add device modals are highly similar, I chose to keep them separate they could diverge in the future based on potential future requirements which would be more complicated to decouple down the road.
 
 - The input fields are validated on the client side, with simple checks for non null values and a check for a number in the capacity field. Again if more complex validation is needed, I would consider bringing in a library like zod or yup
 

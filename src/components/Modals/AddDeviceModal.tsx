@@ -24,9 +24,10 @@ export function AddDeviceModal({ isOpen, onClose }: AddDeviceModalProps) {
     if (!capacity || !type || !systemName) {
       setError('Please fill all fields')
       return
-  }
+    }
     addDevice({
-      system_name: systemName,
+      // this is to ensure the system name is in the correct format matching what the backend expects
+      system_name: systemName.split(' ').join('-').toUpperCase(),
       type: type as DeviceType,
       hdd_capacity: capacity,
     }, {

@@ -24,7 +24,7 @@ export function UpdateDeviceModal({ device, isOpen, onClose }: UpdateDeviceModal
         e.preventDefault();
         updateDevice({
             id: device.id,
-            system_name: systemName,
+            system_name: systemName.split(' ').join('-').toUpperCase(),
             type: type as DeviceType,
             hdd_capacity: capacity,
         },
