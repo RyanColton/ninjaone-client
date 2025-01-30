@@ -29,9 +29,9 @@ export function DeviceFilters({
   resetFilters,
 }: DeviceFiltersProps) {
   return (
-    <div className="flex flex-row gap-4 items-center justify-between pb-4 w-full">
-      <div className="flex flex-row gap-4 items-center">
-        <div className="relative flex-1">
+    <div className="flex flex-row gap-4 items-start md:items-center justify-between pb-4 w-full">
+      <div className="flex flex-col md:flex-row gap-4 items-start md:items-center">
+        <div className="relative flex-1 w-full md:w-auto">
           <MagnifyingGlassIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 fill-[#88859E]" />
           <Input
             type="text"
@@ -39,16 +39,16 @@ export function DeviceFilters({
             placeholder="Search"
             value={searchTerm}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
-            className="min-w-[270px] pl-10"
+            className="w-full md:min-w-[270px] pl-10"
           />
         </div>
 
-        <div className="flex gap-2 items-center">
+        <div className="flex gap-2 items-center w-full md:w-auto">
           <MultiSelect
             label="Device Type"
             value={deviceTypes}
             onChange={setDeviceTypes}
-            className="min-w-[200px]"
+            className="w-full md:min-w-[200px]"
             aria-label="device type"
           >
             <MultiSelect.Option value="ALL">Device Type: All</MultiSelect.Option>
@@ -60,7 +60,7 @@ export function DeviceFilters({
           </MultiSelect>
         </div>
 
-        <div className="flex gap-2 items-center">
+        <div className="flex gap-2 items-center w-full md:w-auto">
           <Select
             value={`${sortField}-${sortOrder}`}
             onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -68,7 +68,7 @@ export function DeviceFilters({
               setSortField(field)
               setSortOrder(order)
             }}
-            className='min-w-[300px]'
+            className='w-full md:min-w-[300px]'
             aria-label="sort"
           >
             <Select.Option value="system_name-asc">Sort by: Name (A-Z)</Select.Option>

@@ -6,15 +6,11 @@ A React application for managing devices, built with TypeScript, React Query, an
 
 ### Prerequisites
 - Node.js (v16 or higher)
-- npm or yarn
+- npm
+- the provided local node server from ninja one up and running on localhost:3000
 
 ### Installation
-1. Clone the repository
-
-```bash
-git clone [your-repo-url]
-cd [your-repo-name]
-```
+1. Download the repository
 
 2. Install dependencies
 ```bash
@@ -32,7 +28,7 @@ The application will be available at `http://localhost:5173`
 
 ### Device Management
 - View all devices in a list format
-- Filter devices by type (Windows, Mac, Linux)
+- Filter devices by type (Windows, Mac, Linux) multiple selection is supported
 - Sort devices by name or HDD capacity
 - Search devices by system name
 - Add new devices
@@ -47,14 +43,17 @@ The application will be available at `http://localhost:5173`
 - `DeviceFilters`: Search, sort, and filter controls
 - `Modals/`: Add, Edit, and Delete device modals
 
-#### `/src/hooks`
-- `useDevices`: React Query hooks for device CRUD operations
-
-#### `/src/services`
-- API integration and data fetching logic
+#### `/src/apiCalls`
+- hooks for mutating data from the server powered by react query
 
 #### `/src/types`
-- TypeScript type definitions
+- some basic types for the device object
+
+### Testing
+- Tests can be run with `npm test`
+- Tests are only stubs with a few basic logic tests and some UI tests around the modals
+- Data fetching is mocked, so the tests are not fully integration tests
+- The tests are not fully comprehensive, but they are a good starting point
 
 ## Technologies Used
 - React
@@ -62,15 +61,16 @@ The application will be available at `http://localhost:5173`
 - TanStack Query (React Query)
 - Tailwind CSS
 - Vite
+- Vitest
+- React Testing Library
 
 ## Project Structure
 ```
 src/
 ├── components/
-│   ├── UILibrary/    # Reusable UI components
-│   └── Modals/       # Modal components
-├── hooks/            # Custom hooks
-├── services/         # API services
+│   ├── UILibrary/    # Reusable UI components built with tailwind
+│   └── Modals/       # Modal components built with UI library modal (similar to react-modal)
+├── apiCalls/         # API custom hooks
 ├── types/           # TypeScript types
 └── utils/           # Utility functions
 ```

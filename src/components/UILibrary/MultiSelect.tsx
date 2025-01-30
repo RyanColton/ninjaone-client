@@ -56,11 +56,11 @@ function MultiSelectComponent<T extends string>({ children, value, onChange, cla
     : `${label}: ${value.length} selected`
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className={`relative ${className || ''}`} ref={dropdownRef}>
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className={`border rounded-sm border-neutral-300 text-neutral-500 text-sm leading-5 px-3 py-2 w-full text-left relative ${className}`}
+        className={`border rounded-sm border-neutral-300 text-neutral-500 text-sm leading-5 px-3 py-2 w-full text-left relative`}
       >
         {displayText}
         <svg className="absolute right-2 top-1/2 -translate-y-1/2" viewBox="0 0 9 5" width="9" height="5">
