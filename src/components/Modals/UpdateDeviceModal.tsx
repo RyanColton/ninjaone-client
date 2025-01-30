@@ -59,10 +59,11 @@ export function UpdateDeviceModal({ device, isOpen, onClose }: UpdateDeviceModal
       {isUpdatingDevice && <div className="text-blue-500">Updating device...</div>}
       <form id="add-device-form" onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-sm font-normal leading-5 text-[#211F33] mb-1">
+          <p className="block text-sm font-normal leading-5 text-neutral-900 mb-1">
             System name *
-          </label>
+          </p>
           <Input
+            aria-label="system-name"
             required
             type="text"
             value={systemName}
@@ -71,10 +72,11 @@ export function UpdateDeviceModal({ device, isOpen, onClose }: UpdateDeviceModal
         </div>
 
         <div>
-          <label className="block text-sm font-normal leading-5 text-[#211F33] mb-1">
+          <p className="block text-sm font-normal leading-5 text-neutral-900 mb-1">
             Device type *
-          </label>
+          </p>
           <Select
+            aria-label="device-type"
             required
             value={type}
             onChange={(e) => setType(e.target.value as DeviceType)}
@@ -89,10 +91,11 @@ export function UpdateDeviceModal({ device, isOpen, onClose }: UpdateDeviceModal
         </div>
 
         <div>
-          <label className="block text-sm font-normal leading-5 text-[#211F33] mb-1">
+          <p className="block text-sm font-normal leading-5 text-neutral-900 mb-1">
             HDD capacity (GB) *
-          </label>
+          </p>
           <Input
+            aria-label="hdd-capacity"
             required
             type="number"
             value={capacity ?? ''}

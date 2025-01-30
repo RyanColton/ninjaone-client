@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Modal } from '../UILibrary/Modal/Modal'
-import { Select } from '../UILibrary/Select'
+import Select from '../UILibrary/Select'
 import { DeviceType } from '../../types/device'
 import { useAddDevice } from '../../apiCalls'
 import Button from '../UILibrary/Button'
@@ -60,10 +60,11 @@ export function AddDeviceModal({ isOpen, onClose }: AddDeviceModalProps) {
       {isAddingDevice && <div className="text-blue-500">Adding device...</div>}
       <form id="add-device-form" onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-sm font-normal leading-5 text-[#211F33] mb-1">
+          <p className="block text-sm font-normal leading-5 text-neutral-900 mb-1">
             System name *
-          </label>
+          </p>
           <Input
+            aria-label="system-name"
             required
             type="text"
             value={systemName}
@@ -72,10 +73,11 @@ export function AddDeviceModal({ isOpen, onClose }: AddDeviceModalProps) {
         </div>
 
         <div>
-          <label className="block text-sm font-normal leading-5 text-[#211F33] mb-1">
+          <p className="block text-sm font-normal leading-5 text-neutral-900 mb-1">
             Device type *
-          </label>
+          </p>
           <Select
+            aria-label="device-type"
             required
             value={type}
             onChange={(e) => setType(e.target.value as DeviceType)}
@@ -90,10 +92,11 @@ export function AddDeviceModal({ isOpen, onClose }: AddDeviceModalProps) {
         </div>
 
         <div>
-          <label className="block text-sm font-normal leading-5 text-[#211F33] mb-1">
+          <p className="block text-sm font-normal leading-5 text-neutral-900 mb-1">
             HDD capacity (GB) *
-          </label>
+          </p>
           <Input
+            aria-label="hdd-capacity"
             required
             type="number"
             value={capacity ?? ''}

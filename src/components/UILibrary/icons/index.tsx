@@ -68,7 +68,6 @@ export function CloseIcon(props: SVGProps<SVGSVGElement>) {
   )
 }
 
-
 export function NinjaOneIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg {...props} width="1280" height="50" viewBox="0 0 1280 50" fill="none" xmlns="http://www.w3.org/2000/svg">

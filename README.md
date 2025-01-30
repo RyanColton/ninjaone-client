@@ -74,9 +74,3 @@ src/
 ├── types/           # TypeScript types
 └── utils/           # Utility functions
 ```
-
-## Contributing
-[Add contribution guidelines if applicable]
-
-## License
-[Add license information]

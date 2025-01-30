@@ -16,7 +16,7 @@ interface DeviceListProps {
 
 export function DeviceList({ data, isLoading, error, openUpdateDeviceModal, openDeleteDeviceModal }: DeviceListProps) {
   const [searchTerm, setSearchTerm] = useState('')
-  const [deviceType, setDeviceType] = useState<DeviceType | 'ALL'>('ALL')
+  const [deviceTypes, setDeviceTypes] = useState<Array<DeviceType | 'ALL'>>(['ALL'])
   const [sortField, setSortField] = useState<SortField>('system_name')
   const [sortOrder, setSortOrder] = useState<SortOrder>('asc')
 
@@ -25,7 +25,7 @@ export function DeviceList({ data, isLoading, error, openUpdateDeviceModal, open
 
     return data
       .filter((device) => {
-        const matchesType = deviceType === 'ALL' || device.type === deviceType
+        const matchesType = deviceTypes.includes(device.type) || deviceTypes.includes('ALL')
         const matchesSearch = device.system_name.toLowerCase().includes(searchTerm.toLowerCase())
         return matchesType && matchesSearch
       })
@@ -36,10 +36,10 @@ export function DeviceList({ data, isLoading, error, openUpdateDeviceModal, open
         }
         return (a.hdd_capacity - b.hdd_capacity) * compareValue
       })
-  }, [data, deviceType, sortField, sortOrder, searchTerm])
+  }, [data, deviceTypes, sortField, sortOrder, searchTerm])
 
   const resetFilters = () => {
-    setDeviceType('ALL')
+    setDeviceTypes(['ALL'])
     setSearchTerm('')
     setSortField('system_name')
     setSortOrder('asc')
@@ -51,8 +51,8 @@ export function DeviceList({ data, isLoading, error, openUpdateDeviceModal, open
   return (
     <div className="flex flex-col items-start flex-1 w-full">
       <DeviceFilters
-        deviceType={deviceType}
-        setDeviceType={setDeviceType}
+        deviceTypes={deviceTypes}
+        setDeviceTypes={setDeviceTypes}
         sortField={sortField}
         setSortField={setSortField}
         sortOrder={sortOrder}
@@ -61,8 +61,8 @@ export function DeviceList({ data, isLoading, error, openUpdateDeviceModal, open
         setSearchTerm={setSearchTerm}
         resetFilters={resetFilters}
       />
-      <p className="text-lg font-medium ml-4 mb-2 text-[#211F33]">Device</p>
-      <div className="first: border-t border-[#E7E8EB] grid flex-1 w-full">
+      <p className="text-lg font-medium ml-4 mb-2 text-neutral-900">Device</p>
+      <div className="first: border-t border-neutral-200 grid flex-1 w-full">
         {filteredAndSortedDevices.map((device) => (
           <DeviceCard key={device.id} device={device} openUpdateDeviceModal={openUpdateDeviceModal} openDeleteDeviceModal={openDeleteDeviceModal} />
         ))}

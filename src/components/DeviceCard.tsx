@@ -25,19 +25,19 @@ export function DeviceCard({ device, openUpdateDeviceModal, openDeleteDeviceModa
   }[device.type]
 
   return (
-    <div className="flex items-center justify-between border-b border-[#E7E8EB] py-2 px-4 hover:bg-[#F4F4F5] group/card">
+    <div className="flex items-center justify-between border-b border-neutral-200 py-2 px-4 hover:bg-neutral-50 group/card">
       <div>
         <div className="flex items-center">
-            <Icon className="h-5 w-5 text-gray-500 fill-[#595766]" />
-            <h3 className="font-medium pl-2 text-[#211F33]">{device.system_name}</h3>
+            <Icon className="h-5 w-5 text-gray-500 fill-neutral-600" />
+            <h3 className="font-medium pl-2 text-neutral-900">{device.system_name}</h3>
         </div>
-        <p className="text-sm text-[#6E6D7A]">
+        <p className="text-sm text-neutral-500">
             {/* Capitalize the first letter of the device type */}
             {device.type[0] + device.type.slice(1).toLocaleLowerCase()} workstation - {formatHddCapacity(device.hdd_capacity)} {getHddCapacityUnit(device.hdd_capacity)}
         </p>
       </div>
       <div className="relative group/edit">
-        <button className="gap-2 p-2 rounded-sm hover:bg-[#E8E8EA] group-hover/card:block hidden cursor-pointer">
+        <button className="gap-2 p-2 rounded-sm hover:bg-neutral-100 group-hover/card:block hidden cursor-pointer">
             <HamburgerIcon className="h-5 w-5 text-gray-500" />
         </button>
         {/* Dropdown Menu */}

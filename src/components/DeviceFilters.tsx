@@ -3,10 +3,11 @@ import { type SortField, type SortOrder } from './DeviceList'
 import { MagnifyingGlassIcon, ResetIcon } from './UILibrary/icons'
 import { Input } from './UILibrary/Input'
 import Select from './UILibrary/Select'
+import MultiSelect from './UILibrary/MultiSelect'
 
 interface DeviceFiltersProps {
-  deviceType: DeviceType | 'ALL'
-  setDeviceType: (type: DeviceType | 'ALL') => void
+  deviceTypes: Array<DeviceType | 'ALL'>
+  setDeviceTypes: (type: Array<DeviceType | 'ALL'>) => void
   sortField: SortField
   setSortField: (field: SortField) => void
   sortOrder: SortOrder
@@ -17,8 +18,8 @@ interface DeviceFiltersProps {
 }
 
 export function DeviceFilters({
-  deviceType,
-  setDeviceType,
+  deviceTypes,
+  setDeviceTypes,
   sortField,
   setSortField,
   sortOrder,
@@ -34,6 +35,7 @@ export function DeviceFilters({
           <MagnifyingGlassIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 fill-[#88859E]" />
           <Input
             type="text"
+            aria-label="search"
             placeholder="Search"
             value={searchTerm}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
@@ -42,17 +44,20 @@ export function DeviceFilters({
         </div>
 
         <div className="flex gap-2 items-center">
-          <Select
-            value={deviceType}
-            onChange={(e) => setDeviceType(e.target.value as DeviceType | 'ALL')}
+          <MultiSelect
+            label="Device Type"
+            value={deviceTypes}
+            onChange={setDeviceTypes}
+            className="min-w-[200px]"
+            aria-label="device type"
           >
-            <Select.Option value="ALL">Device Type: All</Select.Option>
+            <MultiSelect.Option value="ALL">Device Type: All</MultiSelect.Option>
             {Object.values(DeviceType).map((type) => (
-              <Select.Option key={type} value={type}>
+              <MultiSelect.Option key={type} value={type}>
                 Device Type: {type.charAt(0) + type.slice(1).toLowerCase()}
-              </Select.Option>
+              </MultiSelect.Option>
             ))}
-          </Select>
+          </MultiSelect>
         </div>
 
         <div className="flex gap-2 items-center">
@@ -64,6 +69,7 @@ export function DeviceFilters({
               setSortOrder(order)
             }}
             className='min-w-[300px]'
+            aria-label="sort"
           >
             <Select.Option value="system_name-asc">Sort by: Name (A-Z)</Select.Option>
             <Select.Option value="system_name-desc">Sort by: Name (Z-A)</Select.Option>
@@ -72,7 +78,7 @@ export function DeviceFilters({
           </Select>
         </div>
       </div>
-      <button onClick={resetFilters} className="text-sm text-gray-600">
+      <button aria-label="reset filters" onClick={resetFilters} className="text-sm text-gray-600">
         <ResetIcon className="h-5 w-5 fill=[#211F33]" />
       </button>
     </div>

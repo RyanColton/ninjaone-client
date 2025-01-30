@@ -36,7 +36,7 @@ export function DeleteDeviceModal({ device, onClose, isOpen }: DeleteDeviceModal
                     <Button variant="secondary" onClick={onClose}>
                         Cancel
                     </Button>
-                    <Button variant="danger" onClick={handleSubmit}>
+                    <Button data-testid="modal-delete-device-button" variant="danger" onClick={handleSubmit}>
                         Delete
                     </Button>
                 </>
