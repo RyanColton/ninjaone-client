@@ -28,7 +28,7 @@ function App() {
       <div className="flex flex-col items-start flex-1 w-full p-4">
         <div className="flex flex-row justify-between items-center w-full pb-4">
           <p className="text-xl font-medium">Devices</p>
-          <Button variant="primary" onClick={openAddDeviceModal}>
+          <Button aria-label="Add device" variant="primary" onClick={openAddDeviceModal}>
             <PlusIcon className="fill-white h-3.5" />
             <p className="ml-2">Add device</p>
           </Button>

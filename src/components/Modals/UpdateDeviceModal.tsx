@@ -99,7 +99,9 @@ export function UpdateDeviceModal({ device, isOpen, onClose }: UpdateDeviceModal
             required
             type="number"
             value={capacity ?? ''}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCapacity(Number(e.target.value))}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              // this has been done to avoid a leading zero in the input
+              setCapacity(e.target.value as unknown as number)}
           />
         </div>
       </form>

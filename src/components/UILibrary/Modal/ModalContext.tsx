@@ -1,5 +1,5 @@
 import { createContext, useContext, useCallback, type ReactNode, useState } from 'react'
-import { useDisclosure } from './useDisclosure';
+import { useModalVisibility } from './useModalVisibility';
 
 interface ModalContextType {
   openModal: (modalId: string, data?: any) => void
@@ -12,7 +12,7 @@ const ModalContext = createContext<ModalContextType | null>(null)
 
 export function ModalProvider({ children }: { children: ReactNode }) {
   const [modalData, setModalData] = useState<Record<string, any>>({})
-  const modals = useDisclosure()
+  const modals = useModalVisibility()
 
   const openModal = useCallback((modalId: string, data?: any) => {
     if (data) {

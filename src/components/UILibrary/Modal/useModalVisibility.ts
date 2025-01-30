@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react'
 
-export function useDisclosure() {
+export function useModalVisibility() {
   const [openModals, setOpenModals] = useState<Set<string>>(new Set())
 
   const open = useCallback((modalId: string) => {

@@ -17,7 +17,7 @@ export function AddDeviceModal({ isOpen, onClose }: AddDeviceModalProps) {
   const { mutate: addDevice, isPending: isAddingDevice } = useAddDevice();
   const [systemName, setSystemName] = useState('')
   const [type, setType] = useState<DeviceType | ''>('')
-  const [capacity, setCapacity] = useState<number | undefined>(undefined)
+  const [capacity, setCapacity] = useState<number>('' as unknown as number)
   const [error, setError] = useState<string | null>(null)
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -97,10 +97,12 @@ export function AddDeviceModal({ isOpen, onClose }: AddDeviceModalProps) {
           </p>
           <Input
             aria-label="hdd-capacity"
-            required
             type="number"
             value={capacity ?? ''}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCapacity(Number(e.target.value))}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => 
+              // this has been done to avoid a leading zero in the input
+              setCapacity(e.target.value as unknown as number)
+            }
           />
         </div>
       </form>
