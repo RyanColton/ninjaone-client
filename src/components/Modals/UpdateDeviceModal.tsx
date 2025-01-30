@@ -22,6 +22,10 @@ export function UpdateDeviceModal({ device, isOpen, onClose }: UpdateDeviceModal
     const [error, setError] = useState<string | null>(null)
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+        if (!capacity || !type || !systemName) {
+          setError('Please fill all fields')
+          return
+        }
         updateDevice({
             id: device.id,
             system_name: systemName.split(' ').join('-').toUpperCase(),

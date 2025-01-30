@@ -77,6 +77,8 @@ src/
 ## Notes
 - My overall approach was be to treat this as the MVP of a full fledged application, and build it out from there. Considerations around any potential future requirements are considered with this architecture. There are areas where I could have been more DRY, but any areas of duplication are areas that I could forsee diverging in the future.
 
+- I made some deliberate choices in areas on ambiguity with the requirements. I enforced the system name to match the format of the backend, meaning '-' separated words all uppercase. Though not explicitly stated in the requirements, this was done to keep the UI visually consistent. I also added a simplifed capacity conversion to the UI, meaning the capacity is converted to GB from TB for display purposes. It isnt 100% accurate to the byte, but the backend isnt storing the capactiy tied to real unit sizing, so it is a good enough approximation within the scope of the project. 
+
 - I decided to use vite because it is a great modern build tool for react, instead of using a full fledged framework like next.js or remix to keep the scope of the project manageable. In a full production application, I would consider using a framework to handle the routing and server side rendering.
 
 - I chose to use react query for the api calls because it is a lightweight addition to your project that makes data fetching and mutation easier to handle. The built in cache invalidation is a great abstraction that makes the api calls more reliable and easier to handle. If we were using a framework like next.js or remix, I would probably stick to using the framework's built in data fetching and mutation tools.
