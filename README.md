@@ -101,6 +101,6 @@ src/
 
 - Basic considerations for accessibility have been added to the project, but I would consider it a good idea to bring in a library like react-aria or react-a11y to help with accessibility.
 
-- The application should be responsive, but I didnt spend a lot of time on it because the design was simple and the layout was mostly a single column.
+- The application should be basically responsive, but I get to spend as much time as I would like to get it working ideal. The edit and delete buttons are accessible through hover states on desktop and just displayed on mobile. Working out a reasonable JS driven solution for a mobile menu would be a good addition to this project.
 
 - End to end testing would be a good addition to the project, I really have enjoyed working with playwrite and prefer it over cypress. I didnt include any end to end tests due to the scope and time constraints of the project.
