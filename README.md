@@ -103,4 +103,4 @@ src/
 
 - The application should be responsive, but I didnt spend a lot of time on it because the design was simple and the layout was mostly a single column.
 
-- End to end testing would be a good addition to the project, I really have enjoyed working with playwrite and prefer it over cypress. I didnt include any end to end tests due to the scope of the project.
+- End to end testing would be a good addition to the project, I really have enjoyed working with playwrite and prefer it over cypress. I didnt include any end to end tests due to the scope and time constraints of the project.
